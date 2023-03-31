@@ -1,0 +1,9 @@
+apiVersion: backstage.io/v1alpha1
+kind: Component
+metadata:
+  name: rxdata-persistence
+  annotations:
+    github.com/project-slug: creately/rxdata-persistence
+spec:
+  type: other
+  lifecycle: unknown
