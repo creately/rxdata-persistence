@@ -1,6 +1,6 @@
 {
   "name": "@creately/rxdata-persistence",
-  "version": "1.0.2-beta",
+  "version": "1.0.3-beta",
   "description": "",
   "main": "dist/index.js",
   "typings": "dist/index.d.ts",
