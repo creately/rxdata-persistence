@@ -3,8 +3,7 @@
 import mingo from 'mingo';
 import * as LocalForage from 'localforage';
 import 'localforage-setitems';
-import * as isequal from 'lodash.isequal';
-import * as cloneDeep from 'lodash.clonedeep';
+import { isEqual, cloneDeep } from 'lodash';
 import { Observable, Subject, empty, of, defer, from, Subscription } from 'rxjs';
 import { switchMap, concatMap, concat, map, distinctUntilChanged } from 'rxjs/operators';
 import { modify } from '@creately/mungo';
@@ -153,7 +152,7 @@ export class Collection<T extends IDocument> {
       from(this.load()).pipe(
         concat(this.allDocs),
         map((docs) => this.filter(docs, selector, options)),
-        distinctUntilChanged(isequal)
+        distinctUntilChanged(isEqual)
       )
     );
   }
@@ -168,7 +167,7 @@ export class Collection<T extends IDocument> {
       from(this.load()).pipe(
         concat(this.allDocs),
         map((docs) => this.filter(docs, selector, options)[0] || null),
-        distinctUntilChanged(isequal)
+        distinctUntilChanged(isEqual)
       )
     );
   }
