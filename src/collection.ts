@@ -8,7 +8,7 @@ import * as cloneDeep from 'lodash.clonedeep';
 import { Observable, Subject, empty, of, defer, from, Subscription } from 'rxjs';
 import { switchMap, concatMap, concat, map, distinctUntilChanged } from 'rxjs/operators';
 import { modify } from '@creately/mungo';
-import { Channel } from '@creately/lschannel';
+import { Channel } from '@creately/lschannel-es6';
 
 // Selector
 // Selector is a mongo like selector used to filter documents.
@@ -306,7 +306,7 @@ export class Collection<T extends IDocument> {
   // emitAndApply emits the change and waits until it is applied.
   private async emitAndApply(change: DocumentChange<T>): Promise<void> {
     await new Promise(resolve => {
-      this.changeResolve[change.id] = resolve;
+      this.changeResolve[change.id] = resolve as () => void;
       this.changes.next(change);
     });
   }
